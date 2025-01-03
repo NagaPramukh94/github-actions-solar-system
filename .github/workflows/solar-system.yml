@@ -85,11 +85,11 @@ jobs:
     needs: docker
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        name: checkout repo
+      - name: checkout repo
+        uses: actions/checkout@v4
 
       - name: Install Kubectl
-        uses: azure/setup-kubectl
+        uses: azure/setup-kubectl@v3
         with:
           version: v1.26.0
 
