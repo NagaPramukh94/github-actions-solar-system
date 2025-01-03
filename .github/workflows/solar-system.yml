@@ -80,7 +80,8 @@ jobs:
   
   dev-deploy:
     name: Deployment in Dev
-    environment: development
+    environment:
+      name: development
     needs: docker
     runs-on: ubuntu-latest
     steps:
@@ -90,13 +91,13 @@ jobs:
       - name: Install Kubectl
         uses: azure/setup-kubectl
         with:
-          version: 'v1.26.0'
+          version: v1.26.0
 
       - name: set kube context
-        uses: azure/k8s-set-context
+        uses: azure/k8s-set-context@v3
         with:
           method: kubeconfig 
-          kubeconfig: ${{ secrets.KUBECONFIG }}
+          kubeconfig: '${{ secrets.KUBECONFIG }}'
       
       - name: verif
         run: kubectl version --short -o yaml
